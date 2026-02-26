@@ -23,13 +23,14 @@
         }
 
         :root {
-            --bg-primary: #000000;
+            --bg-primary: #121212;
+            --bg-secondary: #181818;
             --text-primary: #ffffff;
             --text-secondary: #888888;
-            --accent-neon: #39ff14;
-            --accent-glow: rgba(57, 255, 20, 0.6);
+            --accent-cyan: #00d2ff;
+            --accent-glow: rgba(0, 210, 255, 0.6);
             --glass-bg: rgba(255, 255, 255, 0.05);
-            --glass-border: rgba(255, 255, 255, 0.1);
+            --glass-border: rgba(255, 255, 255, 0.15);
         }
 
         html, body {
@@ -38,10 +39,10 @@
             overflow: hidden;
             overflow-x: hidden;
             font-family: 'Montserrat', sans-serif;
-            background: #000000;
-            background: radial-gradient(circle at 20% 30%, rgba(57, 255, 20, 0.06) 0%, transparent 40%),
-                        radial-gradient(circle at 80% 70%, rgba(57, 255, 20, 0.04) 0%, transparent 40%),
-                        #000000;
+            background: #121212;
+            background: radial-gradient(circle at 20% 30%, rgba(0, 210, 255, 0.08) 0%, transparent 50%),
+                        radial-gradient(circle at 70% 80%, rgba(0, 210, 255, 0.05) 0%, transparent 50%),
+                        #121212;
             color: var(--text-primary);
             -webkit-font-smoothing: antialiased;
         }
@@ -88,7 +89,7 @@
         }
 
         .nav-btn.active {
-            color: var(--accent-neon);
+            color: var(--accent-cyan);
         }
 
         .nav-btn.active::after {
@@ -98,7 +99,7 @@
             left: 0;
             width: 100%;
             height: 2px;
-            background: var(--accent-neon);
+            background: var(--accent-cyan);
             box-shadow: 0 0 20px var(--accent-glow), 0 0 40px var(--accent-glow);
             animation: glow-pulse 2s ease-in-out infinite;
         }
@@ -234,8 +235,8 @@
 
         .search-bar:focus-within {
             background: rgba(255, 255, 255, 0.12);
-            border-color: var(--accent-neon);
-            box-shadow: 0 0 20px rgba(57, 255, 20, 0.3);
+            border-color: var(--accent-cyan);
+            box-shadow: 0 0 20px rgba(0, 210, 255, 0.3);
         }
 
         .search-icon {
@@ -324,7 +325,7 @@
             font-size: 10rem;
             font-weight: 700;
             letter-spacing: 15px;
-            background: linear-gradient(135deg, var(--accent-neon) 0%, #ffffff 100%);
+            background: linear-gradient(135deg, var(--accent-cyan) 0%, #ffffff 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -458,19 +459,53 @@
         .mini-progress-bar {
             width: 100%;
             height: 4px;
-            background: #333;
+            background: #2a2a2a;
             border-radius: 2px;
             position: relative;
-            overflow: hidden;
+            overflow: visible;
         }
-
+        
         .mini-progress-fill {
             height: 100%;
-            background: var(--accent-neon);
+            background: transparent;
             border-radius: 2px;
             position: relative;
             transition: width 0.1s;
-            box-shadow: 0 0 10px var(--accent-glow);
+        }
+        
+        .mini-progress-svg {
+            position: absolute;
+            top: -8px;
+            left: 0;
+            width: 100%;
+            height: 20px;
+            overflow: visible;
+        }
+        
+        .wave-line-1 {
+            fill: none;
+            stroke: var(--accent-cyan);
+            stroke-width: 3;
+            opacity: 1;
+            animation: wave-flow-1 3s ease-in-out infinite;
+        }
+        
+        .wave-line-2 {
+            fill: none;
+            stroke: var(--accent-cyan);
+            stroke-width: 3;
+            opacity: 0.4;
+            animation: wave-flow-2 3.5s ease-in-out infinite;
+        }
+        
+        @keyframes wave-flow-1 {
+            0%, 100% { transform: translateX(0); }
+            50% { transform: translateX(-20px); }
+        }
+        
+        @keyframes wave-flow-2 {
+            0%, 100% { transform: translateX(0); }
+            50% { transform: translateX(15px); }
         }
 
         .mini-progress-fill::after {
@@ -496,7 +531,7 @@
             transform: translateY(-50%);
             width: 12px;
             height: 12px;
-            background: var(--accent-neon);
+            background: var(--accent-cyan);
             border-radius: 50%;
             box-shadow: 0 0 15px var(--accent-glow), 0 0 30px var(--accent-glow);
             pointer-events: none;
@@ -629,19 +664,27 @@
         .main-progress-bar {
             width: 100%;
             height: 6px;
-            background: #333;
+            background: #2a2a2a;
             border-radius: 3px;
             position: relative;
-            overflow: hidden;
+            overflow: visible;
         }
-
+        
         .main-progress-fill {
             height: 100%;
-            background: var(--accent-neon);
+            background: transparent;
             border-radius: 3px;
             position: relative;
             transition: width 0.1s;
-            box-shadow: 0 0 15px var(--accent-glow);
+        }
+        
+        .main-progress-svg {
+            position: absolute;
+            top: -10px;
+            left: 0;
+            width: 100%;
+            height: 26px;
+            overflow: visible;
         }
 
         .main-progress-fill::after {
@@ -662,7 +705,7 @@
             transform: translateY(-50%);
             width: 16px;
             height: 16px;
-            background: var(--accent-neon);
+            background: var(--accent-cyan);
             border-radius: 50%;
             box-shadow: 0 0 20px var(--accent-glow), 0 0 40px var(--accent-glow);
             pointer-events: none;
@@ -713,7 +756,7 @@
         .control-btn.play-pause svg {
             width: 60px;
             height: 60px;
-            fill: var(--accent-neon);
+            fill: var(--accent-cyan);
             stroke: none;
             filter: drop-shadow(0 0 10px var(--accent-glow));
         }
@@ -737,7 +780,7 @@
             font-size: 2.8rem;
             font-weight: 700;
             font-family: 'Orbitron', monospace;
-            background: linear-gradient(90deg, var(--accent-neon) 0%, #ffffff 100%);
+            background: linear-gradient(90deg, var(--accent-cyan) 0%, #ffffff 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -794,7 +837,7 @@
         }
 
         .lyrics-scroll::-webkit-scrollbar-thumb {
-            background: rgba(57, 255, 20, 0.3);
+            background: rgba(0, 210, 255, 0.3);
             border-radius: 4px;
         }
 
@@ -808,7 +851,7 @@
         }
 
         .lyrics-line.current {
-            color: var(--accent-neon);
+            color: var(--accent-cyan);
             font-weight: 500;
         }
 
@@ -823,7 +866,7 @@
         }
 
         .queue-list::-webkit-scrollbar-thumb {
-            background: rgba(57, 255, 20, 0.3);
+            background: rgba(0, 210, 255, 0.3);
             border-radius: 4px;
         }
 
@@ -841,8 +884,8 @@
         }
 
         .queue-item:hover {
-            background: rgba(57, 255, 20, 0.05);
-            border-color: var(--accent-neon);
+            background: rgba(0, 210, 255, 0.05);
+            border-color: var(--accent-cyan);
             transform: translateX(10px);
         }
 
@@ -888,7 +931,7 @@
         }
 
         .library::-webkit-scrollbar-thumb {
-            background: rgba(57, 255, 20, 0.3);
+            background: rgba(0, 210, 255, 0.3);
             border-radius: 4px;
         }
 
@@ -914,10 +957,10 @@
         }
 
         .playlist-card:hover {
-            background: rgba(57, 255, 20, 0.05);
-            border-color: var(--accent-neon);
+            background: rgba(0, 210, 255, 0.05);
+            border-color: var(--accent-cyan);
             transform: translateX(10px);
-            box-shadow: 0 10px 40px rgba(57, 255, 20, 0.15);
+            box-shadow: 0 10px 40px rgba(0, 210, 255, 0.15);
         }
 
         .playlist-img {
@@ -1022,6 +1065,10 @@
                         <div class="mini-progress-wrapper" id="miniProgressWrapper">
                             <div class="mini-progress-bar">
                                 <div class="mini-progress-fill" id="miniProgressFill">
+                                    <svg class="mini-progress-svg" viewBox="0 0 100 20" preserveAspectRatio="none">
+                                        <path class="wave-line-1" id="miniWave1" d="M 0 10 Q 5 5, 10 10 T 20 10 T 30 10 T 40 10 T 50 10 T 60 10 T 70 10 T 80 10 T 90 10 T 100 10" />
+                                        <path class="wave-line-2" id="miniWave2" d="M 0 10 Q 5 12, 10 10 T 20 10 T 30 10 T 40 10 T 50 10 T 60 10 T 70 10 T 80 10 T 90 10 T 100 10" />
+                                    </svg>
                                     <div class="mini-progress-thumb"></div>
                                 </div>
                             </div>
@@ -1068,6 +1115,10 @@
                     <div class="main-progress-wrapper" id="mainProgressWrapper">
                         <div class="main-progress-bar">
                             <div class="main-progress-fill" id="mainProgressFill">
+                                <svg class="main-progress-svg" viewBox="0 0 100 26" preserveAspectRatio="none">
+                                    <path class="wave-line-1" id="mainWave1" d="M 0 13 Q 5 8, 10 13 T 20 13 T 30 13 T 40 13 T 50 13 T 60 13 T 70 13 T 80 13 T 90 13 T 100 13" />
+                                    <path class="wave-line-2" id="mainWave2" d="M 0 13 Q 5 15, 10 13 T 20 13 T 30 13 T 40 13 T 50 13 T 60 13 T 70 13 T 80 13 T 90 13 T 100 13" />
+                                </svg>
                                 <div class="main-progress-thumb"></div>
                             </div>
                         </div>
@@ -1098,8 +1149,10 @@
                     <button class="control-btn" id="modeSwitch">
                         <svg viewBox="0 0 24 24" id="modeSwitchIcon">
                             <!-- Queue icon (default - when showing lyrics) -->
-                            <path d="M15 6H3v2h12V6zm0 4H3v2h12v-2zM3 16h8v-2H3v2z"/>
-                            <path d="M17 6v8l5-4z"/>
+                            <rect x="2" y="5" width="14" height="2" rx="1"/>
+                            <rect x="2" y="11" width="14" height="2" rx="1"/>
+                            <rect x="2" y="17" width="10" height="2" rx="1"/>
+                            <path d="M18 8l4 3-4 3z"/>
                         </svg>
                     </button>
                 </div>
@@ -1322,6 +1375,41 @@
         setupScrubbableProgress(mainProgressWrapper, mainProgressFill, true);
         setupScrubbableProgress(miniProgressWrapper, miniProgressFill, false);
 
+        // ==================== ANIMATE WAVE PATHS ====================
+        function animateWavePaths() {
+            const miniWave1 = document.getElementById('miniWave1');
+            const miniWave2 = document.getElementById('miniWave2');
+            const mainWave1 = document.getElementById('mainWave1');
+            const mainWave2 = document.getElementById('mainWave2');
+            
+            let frame = 0;
+            
+            function animate() {
+                frame += 0.1;
+                
+                // Generate oscillating wave paths
+                const generatePath = (offset, amplitude) => {
+                    let path = 'M 0 10';
+                    for (let x = 0; x <= 100; x += 2) {
+                        const y = 10 + Math.sin((x + frame + offset) * 0.3) * amplitude;
+                        path += ` L ${x} ${y}`;
+                    }
+                    return path;
+                };
+                
+                if (miniWave1) miniWave1.setAttribute('d', generatePath(0, 3));
+                if (miniWave2) miniWave2.setAttribute('d', generatePath(50, 2));
+                if (mainWave1) mainWave1.setAttribute('d', generatePath(0, 4));
+                if (mainWave2) mainWave2.setAttribute('d', generatePath(50, 3));
+                
+                requestAnimationFrame(animate);
+            }
+            
+            animate();
+        }
+        
+        animateWavePaths();
+        
         // ==================== SYSTEM STATUS DROPDOWN ====================
         statusTrigger.addEventListener('click', () => {
             statusDropdown.classList.toggle('active');
@@ -1496,19 +1584,21 @@
             contentContainer.classList.toggle('show-queue');
             
             if (contentContainer.classList.contains('show-queue')) {
-                // Showing queue - display lyrics icon
+                // Showing queue - display lyrics icon (microphone)
                 modeSwitchIcon.innerHTML = `
-                    <circle cx="12" cy="12" r="1"/>
-                    <path d="M12 2v5m0 10v5"/>
-                    <path d="M4.93 4.93l3.54 3.54m7.07 7.07l3.54 3.54"/>
-                    <path d="M2 12h5m10 0h5"/>
-                    <path d="M4.93 19.07l3.54-3.54m7.07-7.07l3.54-3.54"/>
+                    <rect x="10" y="2" width="4" height="12" rx="2"/>
+                    <path d="M12 14c2.21 0 4-1.79 4-4V6c0-2.21-1.79-4-4-4S8 3.79 8 6v4c0 2.21 1.79 4 4 4z" fill="none" stroke-width="2"/>
+                    <path d="M6 10v0c0 3.31 2.69 6 6 6s6-2.69 6-6"/>
+                    <line x1="12" y1="16" x2="12" y2="20"/>
+                    <line x1="8" y1="20" x2="16" y2="20"/>
                 `;
             } else {
                 // Showing lyrics - display queue icon
                 modeSwitchIcon.innerHTML = `
-                    <path d="M15 6H3v2h12V6zm0 4H3v2h12v-2zM3 16h8v-2H3v2z"/>
-                    <path d="M17 6v8l5-4z"/>
+                    <rect x="2" y="5" width="14" height="2" rx="1"/>
+                    <rect x="2" y="11" width="14" height="2" rx="1"/>
+                    <rect x="2" y="17" width="10" height="2" rx="1"/>
+                    <path d="M18 8l4 3-4 3z"/>
                 `;
             }
         });
